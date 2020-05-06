@@ -1,0 +1,21 @@
+<div class="data-form">
+  <form class="form-signin" action="/subscribers/create" method="POST">
+    <h2 class="form-signin-heading">Create a new subscriber:</h2>
+
+    <label for="inputName">Name</label>
+    <input type="text" name="name" id="inputName" class="form-control" value="<%= subscriber.name %>" placeholder="Name" autofocus>
+
+    <label for="grade1">CSC141</label>
+    <input type="text" name="grade1" id="grade1" class="form-control" value="<%= subscriber.grade1 %>" placeholder="CSC141" required>
+
+    <label for="grade2">CSC142</label>
+    <input type="text" name="grade2" id="grade2" class="form-control" value="<%= subscriber.grade2 %>" placeholder="CSC142" required>
+
+    <label for="grade3">CSC240</label>
+    <input type="text" name="grade3" id="grade3" class="form-control" value="<%= subscriber.grade3 %>" placeholder="CSC240" required>
+
+    <label for="grade4">CSC141</label>
+    <input type="text" name="grade4" id="grade4" class="form-control" value="<%= subscriber.grade4 %>" placeholder="CSC241" required>
+    <br/><button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
+  </form>
+</div>
