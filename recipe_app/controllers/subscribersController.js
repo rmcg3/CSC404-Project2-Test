@@ -26,7 +26,7 @@ module.exports = {
   },
 
   indexView: (req, res) => {
-    res.render("subscribers/index");
+    res.render("./subscribers/index");
   },
 
   saveSubscriber: (req, res) => {

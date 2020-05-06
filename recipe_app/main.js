@@ -54,6 +54,9 @@ app.use(
   })
 );
 
+app.get('/', function(req, res) {
+  res.render("index");
+});
 app.use(
   methodOverride("_method", {
     methods: ["POST", "GET"]
@@ -94,6 +97,7 @@ app.use(bodyParser.urlencoded({
   extended: false
 })); // Parses urlencoded bodies
 app.use(bodyParser.json()); // Send JSON responses
+
 
 const server = app.listen(app.get("port"), () => {
     console.log(`Server running at http://localhost:${app.get("port")}`);

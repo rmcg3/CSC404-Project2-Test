@@ -1,0 +1,112 @@
+<%
+  var qualifiedStudents = [];
+  var tempGrades = [];
+  var i = 0;
+  var sum = 0;
+  subscribers.forEach(subscriber =>{
+    tempGrades.push(subscriber.grade1)
+    tempGrades.push(subscriber.grade2)
+    tempGrades.push(subscriber.grade3)
+    tempGrades.push(subscriber.grade4)
+    for (var i = 0; i < tempGrades.length; i++) {
+    tempGrades[i] = tempGrades[i].toString().toUpperCase();
+    switch (tempGrades[i]) {
+      case 'A':
+        tempGrades[i] = 4.0
+        break
+      case 'A-':
+        tempGrades[i] = 3.7
+        break
+      case 'B+':
+        tempGrades[i] = 3.3
+        break
+      case 'B':
+        tempGrades[i] = 3.0
+        break
+      case 'B-':
+        tempGrades[i] = 2.7
+        break
+      case 'C+':
+        tempGrades[i] = 2.3
+        break
+      case 'C':
+        tempGrades[i] = 2.0
+        break
+      case 'C-':
+        tempGrades[i] = 1.7
+        break
+      case 'D+':
+        tempGrades[i] = 1.3
+        break
+      case 'D':
+        tempGrades[i] = 1.0
+        break
+      case 'F':
+        tempGrades[i] = 0.0
+        break
+      default:
+        tempGrades[i] = 'Invalid Grade'
+    }
+  }
+  for (var i = 0; i < tempGrades.length; i++) {
+    if (typeof tempGrades[i] === 'string' || tempGrades[i] instanceof String){
+        break
+    }
+    else{
+      sum += tempGrades[i]
+    }
+  }
+  if(sum/4 >= 2.5){
+    qualifiedStudents.push(subscriber)
+    sum = 0
+    console.log(subscriber)
+  }
+})
+
+
+
+
+%>
+<h2>Qualified Students</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>CSC141</th>
+      <th>CSC142</th>
+      <th>CSC240</th>
+      <th>CSC241</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% qualifiedStudents.forEach(subscriber => { %>
+    <tr>
+      <td>
+        <a href="<%= `/subscribers/${subscriber._id}` %>">
+          <%= subscriber.name %>
+        </a>
+      </td>
+      <td>
+        <%= subscriber.grade1 %>
+      </td>
+      <td>
+        <%= subscriber.grade2 %>
+      </td>
+      <td>
+        <%= subscriber.grade3 %>
+      </td>
+      <td>
+        <%= subscriber.grade4 %>
+      </td>
+      <td>
+        <a href="<%=`subscribers/${subscriber._id}/edit`%>">
+          Edit
+        </a>
+      </td>
+      <td>
+        <a href="<%= `subscribers/${subscriber._id}/delete?_method=DELETE` %>" onclick="return confirm('Are you sure you want to delete this record?')">Delete</a>
+      </td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>

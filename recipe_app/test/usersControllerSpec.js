@@ -12,12 +12,12 @@ chai.use(chaiHTTP);
 
 describe("subscribersController", () => {
   describe("/subscribers GET", () => {
-    it("it should GET all the subscribers", done => {
+    it("it should GET all the students", done => {
       chai
         .request(app)
         .get("/subscribers")
         .end((errors, res) => {
-          expect(res).to.have.status(500);
+          expect(res).to.have.status(200);
           expect(errors).to.be.equal(null);
           done();
         });
